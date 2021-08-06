@@ -97,7 +97,8 @@
       "edit": "Փոփոխել",
       "open": "Բացել",
       "save": "Պահպանել",
-      "view": "Դիտել"
+      "view": "Դիտել",
+      "change.password": "Change Password"
     },
     "detail": {
       "field": "Դաշտ",

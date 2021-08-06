@@ -10,6 +10,7 @@ import { Account } from 'app/core/auth/account.model';
 import { UserManagementService } from '../service/user-management.service';
 import { User } from '../user-management.model';
 import { UserManagementDeleteDialogComponent } from '../delete/user-management-delete-dialog.component';
+import { ChangePasswordDialogComponent } from 'app/admin/user-management/change-password-dialog/change-password-dialog.component';
 
 @Component({
   selector: 'jhi-user-mgmt',
@@ -72,6 +73,19 @@ export class UserManagementComponent implements OnInit {
         },
         () => (this.isLoading = false)
       );
+  }
+
+  changePassword(user: User): void {
+    const modalRef = this.modalService.open(ChangePasswordDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.user = user;
+    modalRef.result.then(
+      () => {
+        // Left blank intentionally, nothing to do here
+      },
+      () => {
+        // Left blank intentionally, nothing to do here
+      }
+    );
   }
 
   transition(): void {
