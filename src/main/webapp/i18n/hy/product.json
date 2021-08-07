@@ -1,0 +1,30 @@
+{
+  "cjscApp": {
+    "product": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Product",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Product",
+        "notFound": "No Products found"
+      },
+      "created": "Նոր Product ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Product թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Product հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Product {{ id }}?"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "id": "ID",
+      "name": "Name",
+      "productCode": "Product Code",
+      "lastPrice": "Last Price",
+      "photo": "Photo",
+      "description": "Description",
+      "ratings": "Ratings",
+      "category": "Category"
+    }
+  }
+}

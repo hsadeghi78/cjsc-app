@@ -41,6 +41,8 @@
     "packageFolder": "com/am/cjsc",
     "jwtSecretKey": "NzM1Nzc0NjQ2MjI2MmM2N2QyODQ3NWExMzZkODExMDg3MjhlMDk5Yzk3MGExZDQ2ZTM1ZjQxODA4NDMyYTM0ZWY3ZTA5NzVmMWVmMDRkMTQzMWZkNjhkMThiMWJiNjQxODVhYWFkMmU3NTU4ZTcyZTBhZDdkM2ZhMzIzMjYzMzU=",
     "clientPackageManager": "npm",
-    "languages": ["en", "hy"]
+    "languages": ["en", "hy"],
+    "entities": ["Rating", "Category", "Product"],
+    "lastLiquibaseTimestamp": 1628316460000
   }
 }

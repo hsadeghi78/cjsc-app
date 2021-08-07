@@ -6,4 +6,5 @@ webpack/
 target/
 build/
 node/
+jh/
 postcss.config.js

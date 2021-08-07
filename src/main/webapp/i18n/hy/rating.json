@@ -1,0 +1,26 @@
+{
+  "cjscApp": {
+    "rating": {
+      "home": {
+        "title": "Ratings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ստեղծել նոր Rating",
+        "createOrEditLabel": "Ստեղծել կամ փոփոխել Rating",
+        "notFound": "No Ratings found"
+      },
+      "created": "Նոր Rating ստեղծված է {{ param }} նունացուցիչով",
+      "updated": "Rating թարմացվաց է {{ param }} նունացուցիչով",
+      "deleted": "Rating հեռացված է {{ param }}  նունացուցիչով",
+      "delete": {
+        "question": "Դուք վստահ ե՞ք, որ ցանկանում եք հեռացնել Rating {{ id }}?"
+      },
+      "detail": {
+        "title": "Rating"
+      },
+      "id": "ID",
+      "rating": "Rating",
+      "description": "Description",
+      "product": "Product"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+
+/** 4 field fixed **/
+entity Rating{
+	rating Integer min(1) max(5),
+    description String maxlength(2000)
+}
+
+entity Category{
+	title String required maxlength(200),
+    typeCode String required maxlength(50) unique,
+    description String  maxlength(3000)
+}
+
+/** 4 field fixed **/
+entity Product{
+    name String required maxlength(200),
+    productCode String required maxlength(100) unique,
+    lastPrice Double required,
+    photo ImageBlob,
+    description String  maxlength(3000)
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Category{products} to Product{category(title) required},
+	Product{ratings} to Rating{product(name) required}
+}
+
+// Set pagination options
+paginate all with infinite-scroll
+paginate all with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+dto * with mapstruct
+
+// Set service options to all except few
+service * with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
+filter all
+
+
+
