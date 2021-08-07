@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "a2320417-56fd-4d0d-9048-51b40d8967e7",
+		"name": "CJSC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://www.bmbbomb.com:80/api/authenticate",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bmbbomb",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYyODQzMTk0M30.d13ETKwiLxCs6q5qDfhYYqAtd1_5gPBc4ZJ7UHychKv4HO0hntwYPs9q9QetrN79p_6JlayNqrbw_77gCIz6Dw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"category\": {\r\n    \"description\": \"string\",\r\n    \"id\": 2,\r\n    \"title\": \"string\",\r\n    \"typeCode\": \"string\"\r\n  },\r\n  \"description\": \"string\",\r\n  \"lastPrice\": 23500.0,\r\n  \"name\": \"string\",\r\n  \"productCode\": \"23\" // is unique\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://www.bmbbomb.com:80/api/products",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bmbbomb",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYyODQzMTk0M30.d13ETKwiLxCs6q5qDfhYYqAtd1_5gPBc4ZJ7UHychKv4HO0hntwYPs9q9QetrN79p_6JlayNqrbw_77gCIz6Dw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"description\": \"string\",\r\n  \"title\": \"gggggggg\",\r\n  \"typeCode\": \"gg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://www.bmbbomb.com:80/api/categories",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bmbbomb",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add rating to product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYyODQzMTk0M30.d13ETKwiLxCs6q5qDfhYYqAtd1_5gPBc4ZJ7UHychKv4HO0hntwYPs9q9QetrN79p_6JlayNqrbw_77gCIz6Dw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"description\": \"description for rating\",\r\n  \"product\": {\r\n    \"id\": 2,\r\n    \"title\": \"dummy\",\r\n    \"typeCode\": \"dummy\"\r\n  },\r\n  \"rating\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://www.bmbbomb.com:80/api/ratings",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bmbbomb",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYyODQzMTk0M30.d13ETKwiLxCs6q5qDfhYYqAtd1_5gPBc4ZJ7UHychKv4HO0hntwYPs9q9QetrN79p_6JlayNqrbw_77gCIz6Dw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"activated\": true,\r\n    \"authorities\": [\r\n        \"ROLE_USER\"\r\n    ],\r\n    \"createdBy\": \"string\",\r\n    \"createdDate\": \"2021-08-07T14:22:04.479Z\",\r\n    \"email\": \"hossein2@gmail.com\",\r\n    \"firstName\": \"hossein\",\r\n    \"lastName\": \"sadeghi\",\r\n    \"login\": \"hossein2\"\r\n}\r\n/////// after add you can go to panel and change password becouse send reset key is disable",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://www.bmbbomb.com:80/api/admin/users",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bmbbomb",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search product by name,code,price,des, category_name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYyODQzMTk0M30.d13ETKwiLxCs6q5qDfhYYqAtd1_5gPBc4ZJ7UHychKv4HO0hntwYPs9q9QetrN79p_6JlayNqrbw_77gCIz6Dw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://www.bmbbomb.com:80/api/products/search?searchText=23",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bmbbomb",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"products",
+						"search"
+					],
+					"query": [
+						{
+							"key": "searchText",
+							"value": "23"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search product by price range",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYyODQzMTk0M30.d13ETKwiLxCs6q5qDfhYYqAtd1_5gPBc4ZJ7UHychKv4HO0hntwYPs9q9QetrN79p_6JlayNqrbw_77gCIz6Dw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://www.bmbbomb.com:80/api/products?lastPrice.greaterThan=1&lastPrice.lessThan=80000",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bmbbomb",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "lastPrice.greaterThan",
+							"value": "1"
+						},
+						{
+							"key": "lastPrice.lessThan",
+							"value": "80000",
+							"description": "can you see other option in  http://www.bmbbomb.com/admin/docs"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
