@@ -2,34 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
-import { NgbModal, NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IProduct } from '../product.model';
 import { ITEMS_PER_PAGE } from 'app/config/pagination.constants';
 import { ProductService } from '../service/product.service';
 import { ProductDeleteDialogComponent } from '../delete/product-delete-dialog.component';
 import { DataUtils } from 'app/core/util/data-util.service';
 import { RatingDialogComponent } from 'app/entities/product/rating-dialog/rating-dialog.component';
+import { Options, LabelType } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'jhi-product',
   templateUrl: './product.component.html',
-  styles: [
-    `
-      .star {
-        font-size: 1.8rem;
-        color: #b0c4de;
-      }
-      .filled {
-        color: #1e90ff;
-      }
-      .bad {
-        color: #deb0b0;
-      }
-      .filled.bad {
-        color: #ff1e1e;
-      }
-    `,
-  ],
 })
 export class ProductComponent implements OnInit {
   products?: IProduct[];
@@ -41,7 +25,23 @@ export class ProductComponent implements OnInit {
   ascending!: boolean;
   ngbPaginationPage = 1;
   currentSearch?: string;
-  currentRate = 3;
+
+  minValue = 10;
+  maxValue = 80000;
+  options: Options = {
+    floor: 0,
+    ceil: 100000,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '<b>Min price:</b> $'.concat(String(value));
+        case LabelType.High:
+          return '<b>Max price:</b> $'.concat(String(value));
+        default:
+          return '$'.concat(String(value));
+      }
+    },
+  };
 
   constructor(
     protected productService: ProductService,
@@ -74,6 +74,8 @@ export class ProductComponent implements OnInit {
     } else {
       this.productService
         .query({
+          'lastPrice.lessThan': this.maxValue,
+          'lastPrice.greaterThan': this.minValue,
           page: pageToLoad - 1,
           size: this.itemsPerPage,
           sort: this.sort(),
@@ -140,6 +142,14 @@ export class ProductComponent implements OnInit {
 
   clearSearch(): void {
     this.currentSearch = undefined;
+    this.loadPage();
+  }
+
+  minValueChangeRange(event: number): void {
+    this.loadPage();
+  }
+
+  highValueChangeRange(event: number): void {
     this.loadPage();
   }
 

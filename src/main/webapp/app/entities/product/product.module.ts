@@ -7,9 +7,10 @@ import { ProductUpdateComponent } from './update/product-update.component';
 import { ProductDeleteDialogComponent } from './delete/product-delete-dialog.component';
 import { ProductRoutingModule } from './route/product-routing.module';
 import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
-  imports: [SharedModule, ProductRoutingModule],
+  imports: [SharedModule, ProductRoutingModule, NgxSliderModule],
   declarations: [ProductComponent, ProductDetailComponent, ProductUpdateComponent, ProductDeleteDialogComponent, RatingDialogComponent],
   entryComponents: [ProductDeleteDialogComponent, RatingDialogComponent],
 })
