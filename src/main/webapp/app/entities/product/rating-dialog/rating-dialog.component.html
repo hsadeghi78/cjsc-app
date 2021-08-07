@@ -1,0 +1,74 @@
+<form *ngIf="product" name="deleteForm" (ngSubmit)="save()" [formGroup]="editForm">
+  <div class="modal-header">
+    <h4 class="modal-title">Rating And Comment For Product : {{ product.name }}</h4>
+
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="previousState()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+
+    <div class="form-group">
+      <label class="form-check-label" jhiTranslate="cjscApp.rating.rating" for="field_rating">Rating</label>
+      <!--<input type="number" class="form-control" name="rating" data-cy="rating" formControlName="rating" />-->
+      <ngb-rating id="field_rating" name="rating" data-cy="rating" formControlName="rating">
+        <ng-template let-fill="fill" let-index="index">
+          <span class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+        </ng-template>
+      </ngb-rating>
+      <div *ngIf="editForm.get('rating')!.invalid && (editForm.get('rating')!.dirty || editForm.get('rating')!.touched)">
+        <small
+          class="form-text text-danger"
+          *ngIf="editForm.get('rating')?.errors?.min"
+          jhiTranslate="entity.validation.min"
+          [translateValues]="{ min: 1 }"
+        >
+          This field should be at least 1.
+        </small>
+        <small
+          class="form-text text-danger"
+          *ngIf="editForm.get('rating')?.errors?.max"
+          jhiTranslate="entity.validation.max"
+          [translateValues]="{ max: 5 }"
+        >
+          This field cannot be more than 5.
+        </small>
+        <small class="form-text text-danger" [hidden]="!editForm.get('rating')?.errors?.number" jhiTranslate="entity.validation.number">
+          This field should be a number.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" jhiTranslate="cjscApp.rating.description" for="field_description">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        name="description"
+        id="field_description"
+        data-cy="description"
+        formControlName="description"
+      />
+      <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+        <small
+          class="form-text text-danger"
+          *ngIf="editForm.get('description')?.errors?.maxlength"
+          jhiTranslate="entity.validation.maxlength"
+          [translateValues]="{ max: 2000 }"
+        >
+          This field cannot be longer than 2000 characters.
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="previousState()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+    </button>
+
+    <button id="jhi-confirm-delete-product" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-info">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+    </button>
+  </div>
+</form>

@@ -2,16 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { IProduct } from '../product.model';
 import { ITEMS_PER_PAGE } from 'app/config/pagination.constants';
 import { ProductService } from '../service/product.service';
 import { ProductDeleteDialogComponent } from '../delete/product-delete-dialog.component';
 import { DataUtils } from 'app/core/util/data-util.service';
+import { RatingDialogComponent } from 'app/entities/product/rating-dialog/rating-dialog.component';
 
 @Component({
   selector: 'jhi-product',
   templateUrl: './product.component.html',
+  styles: [
+    `
+      .star {
+        font-size: 1.8rem;
+        color: #b0c4de;
+      }
+      .filled {
+        color: #1e90ff;
+      }
+      .bad {
+        color: #deb0b0;
+      }
+      .filled.bad {
+        color: #ff1e1e;
+      }
+    `,
+  ],
 })
 export class ProductComponent implements OnInit {
   products?: IProduct[];
@@ -23,6 +41,7 @@ export class ProductComponent implements OnInit {
   ascending!: boolean;
   ngbPaginationPage = 1;
   currentSearch?: string;
+  currentRate = 3;
 
   constructor(
     protected productService: ProductService,
@@ -90,6 +109,17 @@ export class ProductComponent implements OnInit {
 
   delete(product: IProduct): void {
     const modalRef = this.modalService.open(ProductDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.product = product;
+    // unsubscribe not needed because closed completes on modal close
+    modalRef.closed.subscribe(reason => {
+      if (reason === 'deleted') {
+        this.loadPage();
+      }
+    });
+  }
+
+  rating(product: IProduct): void {
+    const modalRef = this.modalService.open(RatingDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.product = product;
     // unsubscribe not needed because closed completes on modal close
     modalRef.closed.subscribe(reason => {

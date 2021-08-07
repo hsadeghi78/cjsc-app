@@ -33,7 +33,7 @@
           [(ngModel)]="currentSearch"
           id="currentSearch"
           name="currentSearch"
-          placeholder="{{ 'search.searchDunningRule' | translate }}"
+          placeholder="Search In products"
         />
         <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
           <fa-icon [icon]="'search'"></fa-icon>
@@ -83,7 +83,6 @@
             <a *ngIf="product.photo" (click)="openFile(product.photo, product.photoContentType)">
               <img [src]="'data:' + product.photoContentType + ';base64,' + product.photo" style="max-height: 30px" alt="product image" />
             </a>
-            <span *ngIf="product.photo">{{ product.photoContentType }}, {{ byteSize(product.photo) }}</span>
           </td>
           <td>{{ product.description }}</td>
           <td>
@@ -93,6 +92,10 @@
           </td>
           <td class="text-right">
             <div class="btn-group">
+              <button type="submit" (click)="rating(product)" class="btn btn-outline-secondary btn-sm">
+                <fa-icon icon="star"></fa-icon>
+                <span>Rate And Comment</span>
+              </button>
               <button
                 type="submit"
                 [routerLink]="['/product', product.id, 'view']"

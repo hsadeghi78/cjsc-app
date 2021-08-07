@@ -6,10 +6,11 @@ import { ProductDetailComponent } from './detail/product-detail.component';
 import { ProductUpdateComponent } from './update/product-update.component';
 import { ProductDeleteDialogComponent } from './delete/product-delete-dialog.component';
 import { ProductRoutingModule } from './route/product-routing.module';
+import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
 
 @NgModule({
   imports: [SharedModule, ProductRoutingModule],
-  declarations: [ProductComponent, ProductDetailComponent, ProductUpdateComponent, ProductDeleteDialogComponent],
-  entryComponents: [ProductDeleteDialogComponent],
+  declarations: [ProductComponent, ProductDetailComponent, ProductUpdateComponent, ProductDeleteDialogComponent, RatingDialogComponent],
+  entryComponents: [ProductDeleteDialogComponent, RatingDialogComponent],
 })
 export class ProductModule {}
